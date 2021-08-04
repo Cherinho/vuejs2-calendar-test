@@ -1,17 +1,43 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <calendar
+      initial-date="2020-08-05"
+      @date-selected="dateSelected"
+      :days="days"
+    />
+    <calendar style="margin-left: 1rem" :months="months" />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import Calendar from "./components/Calendar.vue";
 
 export default {
   name: "App",
-  components: {
-    HelloWorld,
+  components: { Calendar },
+  data() {
+    return {
+      months: [
+        "yanv",
+        "fevr",
+        "mart",
+        "apre",
+        "mayy",
+        "yun",
+        "yul",
+        "avg",
+        "sent",
+        "octy",
+        "noy",
+        "dek",
+      ],
+      days: ["vos", "pon", "vto", "sred", "che", "pya", "subb"],
+    };
+  },
+  methods: {
+    dateSelected(date) {
+      console.log(date);
+    },
   },
 };
 </script>
@@ -23,6 +49,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 </style>
